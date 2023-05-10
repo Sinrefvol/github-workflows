@@ -26,3 +26,4 @@ jobs:
             [create-pull-request](https://github.com/peter-evans/create-pull-request).
           labels: automated pr
           branch: main-promotion
+          delete-branch: true
