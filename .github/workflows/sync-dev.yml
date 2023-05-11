@@ -20,5 +20,5 @@ jobs:
         run: |
           git fetch
           git checkout dev
-          git merge main --no-ff --no-edit
-          git push origin dev
+          git rebase main
+          git push
