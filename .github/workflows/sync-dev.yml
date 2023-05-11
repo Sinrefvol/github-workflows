@@ -1,0 +1,24 @@
+name: Sync Dev with Main
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  sync-dev-with-main:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Sync Dev with Main
+        run: |
+          git fetch
+          git checkout dev
+          git merge main --no-ff --no-edit
+          git push origin dev
